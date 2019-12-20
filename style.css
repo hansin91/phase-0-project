@@ -1,0 +1,436 @@
+* {
+	outline: none;
+}
+
+:root {
+	--modal-duration: 1s;
+	--modal-color: #428bca;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.body {
+	overflow: auto;
+	box-sizing: border-box;
+}
+
+.hide {
+	display: none !important;
+}
+
+.show {
+	display: block !important;
+}
+
+.container {
+	padding: 0 5%;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.wrapper input[type="text"] {
+	width: 80%;
+}
+
+.create-task {
+	margin-top: 1rem;
+	padding: 0 10%;
+}
+
+.task-input {
+	width: 500px;
+	height: auto;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.input-form {
+	display: block;
+	width: 100%;
+	height: calc(2.25rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	box-shadow: inset 0 0 0 transparent;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.todo-list__wrapper {
+	min-width: 300px;
+}
+
+.todo-list--container,
+.doing--container,
+.completed--container {
+	flex: 0 0 33%;
+}
+
+.todo-list,
+.doing-list,
+.completed-list {
+	width: 90%;
+}
+
+.label-checkbox {
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 6px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.label-checkbox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	border: 1px solid #d3cfc8;
+	border-radius: 0;
+}
+
+.label-checkbox input:checked ~ .checkmark {
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.label-checkbox input:checked ~ .checkmark:after {
+	display: block;
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: 8px;
+	border: 2px solid #fff;
+	border-left: none;
+	border-top: none;
+	-webkit-transform: translate(7.75px, 4.5px) rotate(45deg);
+	transform: translate(7.75px, 4.5px) rotate(45deg);
+}
+
+.label-checkbox .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.todo-list-checkbox {
+	top: 0;
+	left: 0;
+}
+
+#todo-list,
+#doing-list {
+	/* padding: 1rem 0; */
+	height: 100vh;
+}
+
+.completed-list {
+	/* margin-top: 100px; */
+	height: 100vh;
+}
+
+.todo-item,
+.doing-item,
+.completed-item {
+	padding: 1rem;
+	display: flex;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.todo-item--detail h4,
+.doing-item--detail h4 {
+	margin: 0;
+}
+
+.input-edit {
+	padding: 0.5rem;
+	font-size: inherit;
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+	width: 100%;
+}
+
+.todo-name {
+	cursor: pointer;
+}
+
+.description {
+	display: flex;
+}
+
+.description-heading {
+	padding-right: 20px;
+	margin: 0;
+	align-self: center;
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	color: #212529;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out,
+		box-shadow .15s ease-in-out;
+}
+
+.btn-danger {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.btn-light {
+	color: #212529;
+	background-color: #f8f9fa;
+	border-color: #f8f9fa;
+}
+
+.btn-success {
+	color: #fff;
+	background-color: #28a745;
+	border-color: #28a745;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.btn-default {
+	background-color: rgba(9, 30, 66, .04);
+	box-shadow: none;
+	border: none;
+}
+
+.button-action {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.badge {
+	color: #f0c14b;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	margin: 10% auto;
+	width: 60%;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+	animation-name: modalopen;
+	animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+	margin: 0;
+}
+
+.modal-header {
+	background: #fff;
+	padding: 15px;
+	color: #000;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.modal-body {
+	padding: 10px 20px;
+	background: #fff;
+}
+
+.modal-footer {
+	background: #fff;
+	padding: 10px;
+	text-align: left;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.close {
+	float: right;
+	font-size: 30px;
+	color: #000;
+}
+
+.close:hover,
+.close:focus {
+	color: #ccc;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+@keyframes modalopen {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea.form-control {
+	height: auto;
+}
+
+.textarea-input {
+	margin: 2rem 0;
+}
+
+.fa-list {
+	padding-top: 8px;
+}
+
+.width-80 {
+	width: 80% !important;
+}
+
+.font-large {
+	font-size: 1.5em;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#task-description {
+	border: none;
+	padding: 0;
+	font-weight: 500;
+	min-height: 150px;
+	overflow: scroll;
+	text-align: justify;
+	width: 80%;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.checklist-container {
+	margin-left: auto;
+	position: relative;
+}
+
+.checklist-form {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	z-index: 1000;
+	min-width: 250px;
+	background-color: #f4f5f7;
+	padding: 0 20%;
+}
+
+.checklist-form__heading {
+	text-align: center;
+}
+
+.checklist-form__heading h4 {
+	border-bottom: 1px solid #172b4d;
+	padding-bottom: 10px;
+}
+
+.label {
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+
+.checklist-item__heading {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.checklist-item__heading h4 {
+	margin: 0;
+	align-self: center;
+}

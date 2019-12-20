@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todo-List</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="create-task">
+        <div class="task-input">
+          <input type="text" id="input-todo" placeholder="New Task" class="input-form">
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="todo-list--container">
+          <div class="heading">
+            <h2>Todo List</h2>
+          </div>
+          <div class="todo-list__wrapper">
+            <div class="todo-list" id="todo-list"></div>
+          </div>
+        </div>
+        <div class="doing--container">
+          <div class="heading">
+            <h2>Doing</h2>
+          </div>
+          <div class="doing__wrapper">
+            <div class="doing-list" id="doing-list"></div>
+          </div>
+        </div>
+        <div class="completed--container">
+          <div class="heading">
+            <h2>Completed</h2>
+          </div>
+          <div class="completed__wrapper">
+            <div class="completed-list" id="completed-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="todo-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span id="close-modal" class="close">&times;</span>
+          <h2 id="modal-header">Modal Header</h2>
+          <input type="text" class="width-80 font-large bold form-control hide" id="input-edit-task">
+        </div>
+        <div class="modal-body">
+          <input type="hidden" value="" id="task-id">
+          <input type="hidden" value="" id="task-type">
+          <div class="description">
+            <p class="description-heading">Description</p>
+            <button id="edit-description" class="btn btn-light">Edit</button>
+            <button id="save-description" class="hide btn btn-success mr-10">Save</button>
+            <button class="btn btn-light hide" id="cancel-edit-description">&times;</button>
+            <div class="checklist-container">
+              <button id="checklist-btn" class="btn btn-primary">Checklist</button>
+              <div id="checklist-form" class="checklist-form hide">
+                <div class="checklist-form__heading">
+                  <h4>Add Checklist</h4>
+                </div>
+                <form>
+                  <label class="label">Title</label>
+                  <input id="input-checklist-title" type="text" class="form-control">
+                  <div style="margin-top: 1em;">
+                    <button id="add-checklist-btn" class="btn btn-success">Add</button>
+                    <button id="update-checklist-btn" class="btn btn-success hide">Edit</button>
+                    <button id="delete-checklist-btn" class="btn btn-danger hide">Delete</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <p id="task-description" disabled class="form-control"></p>
+          <div class="textarea-input hide">
+            <textarea wrap="off" id="input-description" class="form-control" rows="8"></textarea>
+          </div>
+          <div class="checklist-item">
+            <div id="checklist-title" class="checklist-item__heading">
+              <h4></h4>
+              <button class="btn btn-default">Delete</button>
+            </div>
+            <div id="checklist-list" class="checklist-list"></div>
+            <form id="checklist-item-form" class="hide">
+              <div class="checklist-item-form">
+                <textarea style="margin-bottom: 10px; width:50%;" class="form-control"></textarea>
+                <button id="save-checklist-item-btn" class="btn btn-success">Add</button>
+                <button id="close-checklist-item-btn" class="btn btn-light">&times;</button>
+              </div>
+            </form>
+            <button style="margin-top: 30px;" id="add-checklist-item-btn" class="btn btn-light">Add Item</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="delete-task" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./script.js"/>
+  </body>
+</html>
